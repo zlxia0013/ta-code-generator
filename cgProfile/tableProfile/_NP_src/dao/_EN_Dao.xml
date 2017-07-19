@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="%%ENTITY_BASE_PACKAGE%%.dao.%%ENTITY_CLASS_NAME%%Dao">
+	<sql id="base_column_list" >
+		%%DB_FIELD_LIST_QUERY%%
+	</sql>
+	
+	<select id="getById" parameterType="Integer" resultType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%">
+		SELECT
+		<include refid="base_column_list" />
+		FROM
+		%%TABLE_NAME%% t
+		WHERE
+		t.id = #{id}
+	</select>
+	
+	<insert id="add" parameterType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%" >
+		INSERT INTO 
+			%%TABLE_NAME%%
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+				%%DB_FIELD_LIST_INSERT_COLUMNS%%
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+	          	%%DB_FIELD_LIST_INSERT_VALUES%%
+		</trim>
+	</insert>
+	
+	<update id="update" parameterType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%" >
+	   	UPDATE
+	 		%%TABLE_NAME%%
+        <set>
+	        %%DB_FIELD_LIST_UPDATE%%
+		</set>
+	   	WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="Long">
+	    DELETE FROM 
+			%%TABLE_NAME%%
+	    WHERE 
+        	id = #{id}
+	</delete>
+	
+	<select id="searchPojo" parameterType="%%ENTITY_BASE_PACKAGE%%.dto.%%ENTITY_CLASS_NAME%%SearchCondition" resultType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%">
+		SELECT
+		<include refid="base_column_list" />
+		FROM
+			%%TABLE_NAME%% t
+		WHERE 1=1
+	</select>
+	
+	<select id="searchDto" parameterType="%%ENTITY_BASE_PACKAGE%%.dto.%%ENTITY_CLASS_NAME%%SearchCondition" resultType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%">
+	    SELECT
+	        %%DB_FIELD_LIST_QUERY%%
+	    FROM 
+			%%TABLE_NAME%% a
+	</select>
+	
+	<select id="searchCnt" parameterType="%%ENTITY_BASE_PACKAGE%%.dto.%%ENTITY_CLASS_NAME%%SearchCondition" resultType="Integer">
+        SELECT
+        	count(*)
+        FROM
+        	%%TABLE_NAME%% t
+	</select>
+	
+	<!--%%NPT%DB_METHOD_INSERT%%-->
+</mapper>
