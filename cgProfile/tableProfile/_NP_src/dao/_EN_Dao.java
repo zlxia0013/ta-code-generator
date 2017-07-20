@@ -23,6 +23,4 @@ public interface %%ENTITY_CLASS_NAME%%Dao {
 
 //======================================= new method create here ====================================/
 
-
-	//%%NPT%JAVA_ENTITY_DAO_METHOD_INSERT%%
 }
