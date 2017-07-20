@@ -64,6 +64,6 @@
         FROM
         	%%TABLE_NAME%% t
 	</select>
-	
-	<!--%%NPT%DB_METHOD_INSERT%%-->
+
+	<!--//======================================= new method create here ====================================/-->
 </mapper>
