@@ -7,11 +7,11 @@
 	
 	<select id="getById" parameterType="Integer" resultType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%">
 		SELECT
-		<include refid="base_column_list" />
+			<include refid="base_column_list" />
 		FROM
-		%%TABLE_NAME%% t
+			%%TABLE_NAME%% t
 		WHERE
-		t.id = #{id}
+			t.id = #{id}
 	</select>
 	
 	<insert id="add" parameterType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%" >
@@ -44,7 +44,7 @@
 	
 	<select id="searchPojo" parameterType="%%ENTITY_BASE_PACKAGE%%.dto.%%ENTITY_CLASS_NAME%%SearchCondition" resultType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%">
 		SELECT
-		<include refid="base_column_list" />
+			<include refid="base_column_list" />
 		FROM
 			%%TABLE_NAME%% t
 		LIMIT #{firstRecord}, #{pageSize}
