@@ -47,7 +47,7 @@
 		<include refid="base_column_list" />
 		FROM
 			%%TABLE_NAME%% t
-		WHERE 1=1
+		LIMIT #{firstRecord}, #{pageSize}
 	</select>
 	
 	<select id="searchDto" parameterType="%%ENTITY_BASE_PACKAGE%%.dto.%%ENTITY_CLASS_NAME%%SearchCondition" resultType="%%ENTITY_BASE_PACKAGE%%.pojo.%%ENTITY_CLASS_NAME%%">
@@ -55,6 +55,7 @@
 	        %%DB_FIELD_LIST_QUERY%%
 	    FROM 
 			%%TABLE_NAME%% a
+		LIMIT #{firstRecord}, #{pageSize}
 	</select>
 	
 	<select id="searchCnt" parameterType="%%ENTITY_BASE_PACKAGE%%.dto.%%ENTITY_CLASS_NAME%%SearchCondition" resultType="Integer">
