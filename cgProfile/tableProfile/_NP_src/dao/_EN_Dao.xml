@@ -54,7 +54,7 @@
 	    SELECT
 	        %%DB_FIELD_LIST_QUERY%%
 	    FROM 
-			%%TABLE_NAME%% a
+			%%TABLE_NAME%% t
 		LIMIT #{firstRecord}, #{pageSize}
 	</select>
 	
